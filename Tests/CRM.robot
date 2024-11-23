@@ -4,6 +4,7 @@
 Resource   ../Resources/CRM.robot
 Resource   ../Resources/Common.robot
 
+
 #Runs before each test
 Suite Setup         Insering test data
 
