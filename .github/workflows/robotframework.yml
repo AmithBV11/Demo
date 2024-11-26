@@ -12,12 +12,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      selenium:
-        image: selenium/standalone-chrome:latest
-        options: --shm-size=2g  # Increase shared memory to avoid 'DevToolsActivePort' issues
-        ports:
-          - 4444:4444  # Expose port 4444 for Selenium WebDriver
+  
 
     steps:
       # Step 1: Check out the code from the repository
