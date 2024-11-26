@@ -39,16 +39,11 @@ jobs:
           sudo apt-get install -y google-chrome-stable
 
       # Download and set up ChromeDriver
-      - name: Install ChromeDriver
+      - name: Use Pre-installed ChromeDriver
         run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-          echo "Installed Chrome Version: $CHROME_VERSION"
-          CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
-          echo "ChromeDriver Version: $CHROMEDRIVER_VERSION"
-          wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          rm chromedriver_linux64.zip
+          echo "Using pre-installed ChromeDriver:"
+          which chromedriver
+          chromedriver --version
           
 
       # Step 5: Run Robot Framework tests
