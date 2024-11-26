@@ -12,11 +12,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-  
+
 
     steps:
       # Step 1: Check out the code from the repository
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       # Step 2: Set up Python environment
@@ -32,11 +32,22 @@ jobs:
           pip install robotframework
           pip install robotframework-seleniumlibrary
 
-      # Step 4: Install WebDriver
-      - name: Set up ChromeDriver
-        uses: actions/setup-chromedriver@v2
-          with
-          python -m pip install webdriver-manager
+      # Set up Google Chrome
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      # Download and set up ChromeDriver
+      - name: Install ChromeDriver
+        run: |
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')2
+          CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
+          wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+          rm chromedriver_linux64.zip
+          
 
       # Step 5: Run Robot Framework tests
       - name: Run Robot Framework tests
