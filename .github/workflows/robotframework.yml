@@ -31,14 +31,16 @@ jobs:
           python-version: 3.13.0  # You can change this to the Python version you're using
 
       # Step 3: Install dependencies
+
       - name: Install dependencies
         run: |
           pip install robotframework
           pip install robotframework-seleniumlibrary
 
       # Step 4: Install WebDriver
-      - name: Install WebDriver
-        run: |
+      - name: Set up ChromeDriver
+        uses: actions/setup-chromedriver@v2
+          with
           python -m pip install webdriver-manager
 
       # Step 5: Run Robot Framework tests
