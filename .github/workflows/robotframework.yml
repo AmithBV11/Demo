@@ -33,10 +33,17 @@ jobs:
           pip install robotframework-seleniumlibrary
 
       # Set up Google Chrome
-      - name: Install Google Chrome
+      - name: Install ChromeDriver
         run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+')
+          CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
+          wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+
+      - name: Set Environment Variables
+        run: |
+          export ROBOT_OPTIONS="--headless --no-sandbox --disable-dev-shm-usage"
 
       # Download and set up ChromeDriver
       - name: Use Pre-installed ChromeDriver
