@@ -31,6 +31,7 @@ jobs:
         run: |
           pip install robotframework
           pip install robotframework-seleniumlibrary
+          pip install -r requirement.txt
 
       # Set up Google Chrome
       - name: Install ChromeDriver
@@ -57,3 +58,5 @@ jobs:
       - name: Run Robot Framework tests
         run: |
           robot -d results Tests/CRM.robot
+          
+          
