@@ -33,20 +33,10 @@ jobs:
           pip install -r requirement.txt
 
       # Set up Google Chrome
-      - name: Install ChromeDriver
+      - name: Install Google Chrome
         run: |
-           CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-          echo "Installed Chrome Version: $CHROME_VERSION"
-          CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
-          echo "ChromeDriver Version: $CHROMEDRIVER_VERSION"
-          wget https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          rm chromedriver_linux64.zip
-
-      - name: Set Environment Variables
-        run: |
-          export ROBOT_OPTIONS="--headless --no-sandbox --disable-dev-shm-usage"
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
 
       # Download and set up ChromeDriver
       - name: Use Pre-installed ChromeDriver
@@ -54,7 +44,6 @@ jobs:
           echo "Using pre-installed ChromeDriver:"
           which chromedriver
           chromedriver --version
-          
 
       # Step 5: Run Robot Framework tests
       - name: Run Robot Framework tests
@@ -62,3 +51,4 @@ jobs:
           robot -d results Tests/CRM.robot
           
           
+      
