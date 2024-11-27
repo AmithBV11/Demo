@@ -51,4 +51,9 @@ jobs:
           robot -d results Tests/CRM.robot
           
           
-      
+      # Step 6: Upload robot framework report
+      - name: Upload robot framework report
+        uses: actions/upload-artifact@v3
+        with:
+          name: robot-reports
+          path: reports
