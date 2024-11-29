@@ -98,8 +98,8 @@ jobs:
       # Step 8: Send Email with the report attached (using Python)
       - name: Send Email with Report
         env:
-          EMAIL_USERNAME: ${{ secrets.amithbv.1111@gmail.com }}
-          EMAIL_PASSWORD: ${{ secrets.Sairam@11 }}
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           EMAIL_SUBJECT: "Robot Framework Test Report"
         run: |
