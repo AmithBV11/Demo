@@ -39,39 +39,12 @@ jobs:
             pip install robotframework
             pip install -r requirement.txt
 
-      # Step 4: Install necessary libraries for Chrome
-      - name: Install Chrome Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            libnss3 \
-            libxss1 \
-            libappindicator1 \
-            libindicator7 \
-            fonts-liberation \
-            libasound2 \
-            libatk1.0-0 \
-            libpangocairo-1.0-0 \
-            libgtk-3-0 \
-            libgbm-dev \
-            libxshmfence-dev \
-            libxrandr-dev \
-            xvfb  # Install Xvfb for headless mode
-      
-
-      - name: Install Dependencies
-        run: |
-            sudo apt-get install -y libnss3 libxss1 libappindicator1 libindicator7 \
-              fonts-liberation libasound2 libatk1.0-0 libpangocairo-1.0-0 libgtk-3-0 \
-              libgbm-dev libxshmfence-dev libxrandr-dev
-            python3 -m pip install --upgrade pip
-            pip install selenium
 
       # Set up Google Chrome
       - name: Install Google Chrome
         run: |
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo apt install ./google-chrome-stable_current_amd64.deb -y
+            sudo apt-get update
+            sudo apt-get install -y google-chrome-stable
 
       # Download and set up ChromeDriver
       - name: Use Pre-installed ChromeDriver
@@ -80,13 +53,7 @@ jobs:
           which chromedriver
           chromedriver --version
 
-       # Step 7: Run Robot Framework tests with Xvfb
-      - name: Run Robot Framework tests
-        run: |
-          export DISPLAY=:99  # Set display for headless mode using Xvfb
-          Xvfb :99 -screen 0 1920x1080x24 &  # Start Xvfb in the background
-          robot -d results Tests/CRM.robot   
-    
+      
 
       # Step 6: Upload robot framework report
       - name: Upload robot framework report
@@ -95,59 +62,3 @@ jobs:
           name: robot-reports
           path: report/
 
-      # Step 8: Send Email with the report attached (using Python)
-      - name: Send Email with Report
-        env:
-          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          EMAIL_SUBJECT: "Robot Framework Test Report"
-        run: |
-          python -m pip install secure-smtplib  # Install secure-smtplib if needed
-          
-          import smtplib
-          from email.mime.multipart import MIMEMultipart
-          from email.mime.text import MIMEText
-          from email.mime.base import MIMEBase
-          from email import encoders
-          
-          # Email configuration
-          sender_email = "${{ secrets.EMAIL_USERNAME }}"
-          receiver_email = "${{ secrets.EMAIL_TO }}"
-          subject = "${{ secrets.EMAIL_SUBJECT }}"
-          body = "Please find attached the Robot Framework test report."
-          
-          # Create message container
-          msg = MIMEMultipart()
-          msg['From'] = sender_email
-          msg['To'] = receiver_email
-          msg['Subject'] = subject
-          
-          msg.attach(MIMEText(body, 'plain'))
-          
-          # Attach the report file (adjust path as necessary)
-          filename = 'results/report.html'  # Adjust based on your report file location and format
-          
-          attachment = open(filename, 'rb')
-          
-          part = MIMEBase('application', 'octet-stream')
-          part.set_payload(attachment.read())
-          
-          encoders.encode_base64(part)
-          
-          part.add_header('Content-Disposition', f'attachment; filename={filename}')
-          
-          msg.attach(part)
-          
-          # Connect to server and send email
-                    try:
-                        server = smtplib.SMTP('smtp.gmail.com', 587)  # Use your SMTP server details here (e.g., Gmail)
-                        server.starttls()
-                        server.login(sender_email, "${{ secrets.EMAIL_PASSWORD }}")
-                        server.send_message(msg)
-                        print("Email sent successfully!")
-
-                        server.quit()
-
-                    except Exception as e:
-                        print(f"Failed to send email. Error: {e}")
