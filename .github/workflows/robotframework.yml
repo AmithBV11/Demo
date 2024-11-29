@@ -33,7 +33,13 @@ jobs:
 
       # Step 3: Install dependencies
 
-
+      - name: Install dependencies
+        run: |
+            pip install robotframework
+            pip install robotframework-seleniumlibrary
+            pip install -r requirement.txt
+      
+      
 
       - name: Install Dependencies
         run: |
