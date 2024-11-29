@@ -33,11 +33,15 @@ jobs:
 
       # Step 3: Install dependencies
 
-      - name: Install dependencies
+
+
+      - name: Install Dependencies
         run: |
-          pip install robotframework
-          pip install robotframework-seleniumlibrary
-          pip install -r requirement.txt
+            sudo apt-get install -y libnss3 libxss1 libappindicator1 libindicator7 \
+              fonts-liberation libasound2 libatk1.0-0 libpangocairo-1.0-0 libgtk-3-0 \
+              libgbm-dev libxshmfence-dev libxrandr-dev
+            python3 -m pip install --upgrade pip
+            pip install selenium
 
       # Set up Google Chrome
       - name: Install Google Chrome
