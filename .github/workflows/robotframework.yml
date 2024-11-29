@@ -87,7 +87,7 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 &  # Start Xvfb in the background
           robot -d results Tests/CRM.robot   
     
-    
+
       # Step 6: Upload robot framework report
       - name: Upload robot framework report
         uses: actions/upload-artifact@v3
@@ -138,3 +138,16 @@ jobs:
           part.add_header('Content-Disposition', f'attachment; filename={filename}')
           
           msg.attach(part)
+          
+          # Connect to server and send email
+                    try:
+                        server = smtplib.SMTP('smtp.gmail.com', 587)  # Use your SMTP server details here (e.g., Gmail)
+                        server.starttls()
+                        server.login(sender_email, "${{ secrets.EMAIL_PASSWORD }}")
+                        server.send_message(msg)
+                        print("Email sent successfully!")
+
+                        server.quit()
+
+                    except Exception as e:
+                        print(f"Failed to send email. Error: {e}")
