@@ -53,6 +53,10 @@ jobs:
           which chromedriver
           chromedriver --version
 
+       # Step 5: Run Robot Framework tests
+      - name: Run Robot Framework tests
+        run: |
+          robot -d results Tests/CRM.robot
       
 
       # Step 6: Upload robot framework report
