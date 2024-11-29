@@ -87,7 +87,6 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 &  # Start Xvfb in the background
           robot -d results Tests/CRM.robot   
     
-          
       # Step 6: Upload robot framework report
       - name: Upload robot framework report
         uses: actions/upload-artifact@v3
@@ -112,8 +111,8 @@ jobs:
           from email import encoders
           
           # Email configuration
-          sender_email = "${{ secrets.amithbv.1111@gmail.com }}"
-          receiver_email = "${{ secrets.amithbv.1111@gmail.com }}"
+          sender_email = "${{ secrets.EMAIL_USERNAME }}"
+          receiver_email = "${{ secrets.EMAIL_TO }}"
           subject = "${{ secrets.EMAIL_SUBJECT }}"
           body = "Please find attached the Robot Framework test report."
           
