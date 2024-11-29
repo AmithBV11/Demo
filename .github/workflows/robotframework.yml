@@ -94,47 +94,47 @@ jobs:
         with:
           name: robot-reports
           path: results/
-            
-            # Step 8: Send Email with the report attached (using Python)
-                  - name: Send Email with Report
-                  env:
-                    EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
-                    EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-                    EMAIL_TO: ${{ secrets.EMAIL_TO }}
-                    EMAIL_SUBJECT: "Robot Framework Test Report"
-                  run: |
-                    python -m pip install secure-smtplib  # Install secure-smtplib if needed
-                    
-                    import smtplib
-                    from email.mime.multipart import MIMEMultipart
-                    from email.mime.text import MIMEText
-                    from email.mime.base import MIMEBase
-                    from email import encoders
-                    
-                    # Email configuration
-                    sender_email = "${{ secrets.amithbv.1111@gmail.com }}"
-                    receiver_email = "${{ secrets.amithbv.1111@gmail.com }}"
-                    subject = "${{ secrets.EMAIL_SUBJECT }}"
-                    body = "Please find attached the Robot Framework test report."
-                    
-                    # Create message container
-                    msg = MIMEMultipart()
-                    msg['From'] = sender_email
-                    msg['To'] = receiver_email
-                    msg['Subject'] = subject
-                    
-                    msg.attach(MIMEText(body, 'plain'))
-                    
-                    # Attach the report file (adjust path as necessary)
-                    filename = 'results/report.html'  # Adjust based on your report file location and format
-                    
-                    attachment = open(filename, 'rb')
-                    
-                    part = MIMEBase('application', 'octet-stream')
-                    part.set_payload(attachment.read())
-                    
-                    encoders.encode_base64(part)
-                    
-                    part.add_header('Content-Disposition', f'attachment; filename={filename}')
-                    
-                    msg.attach(part)
+
+      # Step 8: Send Email with the report attached (using Python)
+      - name: Send Email with Report
+        env:
+          EMAIL_USERNAME: ${{ secrets.amithbv.1111@gmail.com }}
+          EMAIL_PASSWORD: ${{ secrets.Sairam@11 }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_SUBJECT: "Robot Framework Test Report"
+        run: |
+          python -m pip install secure-smtplib  # Install secure-smtplib if needed
+          
+          import smtplib
+          from email.mime.multipart import MIMEMultipart
+          from email.mime.text import MIMEText
+          from email.mime.base import MIMEBase
+          from email import encoders
+          
+          # Email configuration
+          sender_email = "${{ secrets.amithbv.1111@gmail.com }}"
+          receiver_email = "${{ secrets.amithbv.1111@gmail.com }}"
+          subject = "${{ secrets.EMAIL_SUBJECT }}"
+          body = "Please find attached the Robot Framework test report."
+          
+          # Create message container
+          msg = MIMEMultipart()
+          msg['From'] = sender_email
+          msg['To'] = receiver_email
+          msg['Subject'] = subject
+          
+          msg.attach(MIMEText(body, 'plain'))
+          
+          # Attach the report file (adjust path as necessary)
+          filename = 'results/report.html'  # Adjust based on your report file location and format
+          
+          attachment = open(filename, 'rb')
+          
+          part = MIMEBase('application', 'octet-stream')
+          part.set_payload(attachment.read())
+          
+          encoders.encode_base64(part)
+          
+          part.add_header('Content-Disposition', f'attachment; filename={filename}')
+          
+          msg.attach(part)
