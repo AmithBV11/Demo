@@ -80,10 +80,18 @@ jobs:
           which chromedriver
           chromedriver --version
 
+       # Step 7: Run Robot Framework tests with Xvfb
+      - name: Run Robot Framework tests
+        run: |
+          export DISPLAY=:99  # Set display for headless mode using Xvfb
+          Xvfb :99 -screen 0 1920x1080x24 &  # Start Xvfb in the background
+          robot -d results Tests/CRM.robot   
+
       # Step 5: Run Robot Framework tests
       - name: Run Robot Framework tests
         run: |
           robot -d results Tests/CRM.robot
+          
           
           
       # Step 6: Upload robot framework report
