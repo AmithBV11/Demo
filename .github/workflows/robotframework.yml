@@ -12,9 +12,13 @@ on:
   schedule:
     # Every Monday at 6:00 AM UTC 0 6 * * 1
     # minute hour day month day-of-week
-    - cron: '0 13 * * 1'
+    - cron: '15 13 * * 1'
 
- # Allow manual triggering of the workflow
+  permissions:
+    contents: read
+
+
+  # Allow manual triggering of the workflow
   workflow_dispatch:
 
 jobs:
