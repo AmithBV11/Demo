@@ -1,7 +1,6 @@
 name: Robot Framework CI
 
-permissions:
-  contents: read
+
 
 on:
   push:
@@ -15,8 +14,10 @@ on:
   schedule:
     # Every Monday at 6:00 AM UTC 0 6 * * 1
     # minute hour day month day-of-week
-    - cron: '5 8 * * 1'
+    - cron: '*/5 * * * *'
 
+permissions:
+  contents: read
 
 
 
@@ -31,6 +32,9 @@ jobs:
       # Step 1: Check out the code from the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - name: Run a script
+        run: echo "This job runs every 5 minutes and on push!"
 
 
       # Step 2: Set up Python environment
