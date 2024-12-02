@@ -1,5 +1,8 @@
 name: Robot Framework CI
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -12,10 +15,9 @@ on:
   schedule:
     # Every Monday at 6:00 AM UTC 0 6 * * 1
     # minute hour day month day-of-week
-    - cron: '15 13 * * 1'
+    - cron: '20 13 * * 1'
 
-  permissions:
-    contents: read
+ 
 
 
   # Allow manual triggering of the workflow
