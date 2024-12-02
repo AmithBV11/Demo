@@ -80,6 +80,7 @@ jobs:
           which chromedriver
           chromedriver --version
 
+
        # Step 7: Run Robot Framework tests with Xvfb
       - name: Run Robot Framework tests
         run: |
@@ -88,4 +89,3 @@ jobs:
           robot -d results Tests/CRM.robot   
     
 
-    
