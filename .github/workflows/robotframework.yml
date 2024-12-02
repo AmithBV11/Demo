@@ -1,6 +1,7 @@
 name: Robot Framework CI
 
-
+permissions:
+  contents: read
 
 on:
   push:
@@ -15,11 +16,6 @@ on:
     # Every Monday at 6:00 AM UTC 0 6 * * 1
     # minute hour day month day-of-week
     - cron: '*/5 * * * *'
-
-permissions:
-  contents: read
-
-
 
   # Allow manual triggering of the workflow
   workflow_dispatch:
