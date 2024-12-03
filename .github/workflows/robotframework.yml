@@ -53,6 +53,7 @@ jobs:
             pip install robotframework
             pip install robotframework-seleniumlibrary
             pip install -r requirement.txt
+            pip install robotframework robotframework-requests
 
       # Step 4: Install necessary libraries for Chrome
       - name: Install Chrome Dependencies
@@ -103,18 +104,6 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 &  # Start Xvfb in the background
           robot -d results Tests/CRM.robot
           robot -d results Tests/CRM2.robot
+          robot -d results Tests/*
     
-      - name: Send Email Notification
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Workflow Notification"
-          body: |
-            Hello,
-
-            This is an automated email from your GitHub workflow.
-          to: amithbv.1111@gmail.com
-          from: ${{ secrets.EMAIL_USERNAME }}
+      
