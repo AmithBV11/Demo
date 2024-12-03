@@ -36,7 +36,7 @@ jobs:
       # Step 2: Set up Python environment
       - name: Use secret
         env:
-            MY_SECRET: ${{ secrets.CRED1 }}
+            MY_SECRET: ${{ secrets.EMAIL }}
         run: echo "Using the secret"
 
 
