@@ -112,3 +112,26 @@ jobs:
         with:
           name: robot-reports
           path: results/
+
+      # Step 2: Send Email
+      - name: Send Email Notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Workflow Notification"
+          body: |
+            Hi,
+            
+            This is a notification from your GitHub Actions workflow.
+            
+            Repository: ${{ github.repository }}
+            Workflow: ${{ github.workflow }}
+            Run Number: ${{ github.run_number }}
+            
+            Best regards,
+            GitHub Actions Bot
+          to: amithbv.1111@gmail.com
+          from: ${{ secrets.EMAIL_USERNAME }}
