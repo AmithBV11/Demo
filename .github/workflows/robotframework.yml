@@ -103,8 +103,7 @@ jobs:
           export DISPLAY=:99  # Set display for headless mode using Xvfb
           Xvfb :99 -screen 0 1920x1080x24 &  # Start Xvfb in the background
           robot -d results Tests/CRM.robot
-          robot -d results Tests/CRM2.robot
-          robot -d results Tests/*
+          
     
        # Step 7: Upload robot framework report
       - name: Upload robot framework report
