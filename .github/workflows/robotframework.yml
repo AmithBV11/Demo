@@ -119,7 +119,7 @@ jobs:
           server_address: smtp.gmail.com
           server_port: ${{ secrets.SMTP_PORT }}
           username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          password: rmtyottjtdyfzhjx
           subject: "Workflow Notification"
           body: |
             Hi,
