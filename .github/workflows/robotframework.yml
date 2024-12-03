@@ -116,10 +116,10 @@ jobs:
       - name: Send Email Notification
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com
-          server_port: ${{ secrets.SMTP_PORT }}
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: rmtyottjtdyfzhjx
+          server_address: smtp.office365.com
+          server_port: 587
+          username: deloitte.bv@mercedes-benz.com
+          password: Sairam@1111
           subject: "Workflow Notification"
           body: |
             Hi,
@@ -132,5 +132,5 @@ jobs:
             
             Best regards,
             GitHub Actions Bot
-          to: amithbv.1111@gmail.com
-          from: amithbv.1111@gmail.com
+          to: deloitte.bv@mercedes-benz.com
+          from: deloitte.bv@mercedes-benz.com
