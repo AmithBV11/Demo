@@ -104,4 +104,17 @@ jobs:
           robot -d results Tests/CRM.robot
           robot -d results Tests/CRM2.robot
     
+      - name: Send Email Notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ CRED1.SMTP_SERVER }}
+          server_port: ${{ CRED1.SMTP_PORT }}
+          username: ${{ CRED1.EMAIL_USERNAME }}
+          password: ${{ CRED1.EMAIL_PASSWORD }}
+          subject: "Workflow Notification"
+          body: |
+            Hello,
 
+            This is an automated email from your GitHub workflow.
+          to: amithbv.1111@gmail.com
+          from: ${{ CRED1.EMAIL_USERNAME }}
