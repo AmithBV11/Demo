@@ -134,4 +134,4 @@ jobs:
             Best regards,
             GitHub Actions Bot
           to: amithbv.1111@gmail.com
-          from: ${{ secrets.EMAIL_USERNAME }}
+          from: amithbv.1111@gmail.com
