@@ -115,5 +115,9 @@ jobs:
           path: results/
 
       - name: Send Email Report
+        env:
+          MY_SECRET: ${{ secrets.EMAIL }}  # Email address from secrets
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}  # Email password from secrets
         run: python send_email.py
+
 
