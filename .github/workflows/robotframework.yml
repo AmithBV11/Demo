@@ -117,11 +117,6 @@ jobs:
           name: robot-reports
           path: results/
 
-        tasks:
-         Run Robot Tests:
-          shell: python -m robot --outputdir output --report NONE --logtitle "Test Log" tests.robot
+      - name: Send Email Report
+        run: python send_email.py
 
-         Send Email Report:
-          shell: python send_email.py
-
-         artifactsDir: output
