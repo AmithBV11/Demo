@@ -40,7 +40,7 @@ def send_email_with_attachment(subject, body, to_email, attachment_path):
 if __name__ == "__main__":
     subject = "Robot Framework Test Report"
     body = "Please find attached the Robot Framework test report."
-    to_email = "deloitte.bv@mercedes-benz.com"  # Change to recipient's email address
+    to_email = "amithbv.1111@gmail.com"  # Change to recipient's email address
     attachment_path = "results/report.html"  # Change to your report path
 
     send_email_with_attachment(subject, body, to_email, attachment_path)
