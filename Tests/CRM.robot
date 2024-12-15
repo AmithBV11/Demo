@@ -1,4 +1,5 @@
 *** Settings ***
+Library  RequestsLibrary
 
 #run the script: robot -d results tests/crm1.robot
 Resource   ../Resources/CRM.robot
@@ -35,7 +36,6 @@ Add new customer
     CRM.Add customer
     CRM.verify success
     #Common.close the browser
-
 
 *** Keywords ***
 

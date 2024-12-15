@@ -14,6 +14,7 @@ Sign in
     page should contain   Login
 
     input text              id=email-id         admin@robotframeworktutorial.com
+    #input text              id=email-         admin@robotframeworktutorial.com
     input text              id=password       qwe
     click button            Submit
 
