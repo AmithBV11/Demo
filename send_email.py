@@ -32,7 +32,8 @@ def send_email_with_attachment(subject, body, to_email, attachment_path):
 
     # Create SMTP session for sending the mail
     # with smtplib.SMTP('smtp.gmail.com', 587) as server:
-    with smtplib.SMTP('smtp.office365.com', 587) as server:
+    #with smtplib.SMTP('smtp.office365.com', 587) as server:
+    with smtplib.SMTP('smtp.gmail.com', 587) as server:
         server.starttls()  # Enable security
         server.login(from_email, password)  # Login with your email and password
         server.send_message(msg)
