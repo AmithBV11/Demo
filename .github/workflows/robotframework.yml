@@ -119,7 +119,7 @@ jobs:
       - name: Send Email Report
         env:
           #MY_SECRET: ${{ secrets.EMAIL }}  # Email address from secrets
-          #EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}  # Email password from secrets
+           #EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}  # Email password from secrets
           MY_SECRET: ${{ secrets.OFFICE_EMAIL }}  # Email address from secrets
           EMAIL_PASSWORD: ${{ secrets.OFFICE_PASSWORD }}  # Email password from secrets
         run: python send_email.py
