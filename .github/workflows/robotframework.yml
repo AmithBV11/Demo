@@ -78,19 +78,19 @@ jobs:
 #            xvfb  # Install Xvfb for headless mode
       
 
-      - name: Install Dependencies
-        run: |
-            sudo apt-get install -y libnss3 libxss1 libappindicator1 libindicator7 \
-              fonts-liberation libasound2 libatk1.0-0 libpangocairo-1.0-0 libgtk-3-0 \
-              libgbm-dev libxshmfence-dev libxrandr-dev
-            python3 -m pip install --upgrade pip
-            pip install selenium
+#      - name: Install Dependencies
+#        run: |
+#            sudo apt-get install -y libnss3 libxss1 libappindicator1 libindicator7 \
+#              fonts-liberation libasound2 libatk1.0-0 libpangocairo-1.0-0 libgtk-3-0 \
+#              libgbm-dev libxshmfence-dev libxrandr-dev
+#            python3 -m pip install --upgrade pip
+#            pip install selenium
 
-      # Step 6:Set up Google Chrome
-      - name: Install Google Chrome
-        run: |
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo apt install ./google-chrome-stable_current_amd64.deb -y
+#      # Step 6:Set up Google Chrome
+#      - name: Install Google Chrome
+#        run: |
+#            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#            sudo apt install ./google-chrome-stable_current_amd64.deb -y
 
       # Download and set up ChromeDriver
       - name: Use Pre-installed ChromeDriver
