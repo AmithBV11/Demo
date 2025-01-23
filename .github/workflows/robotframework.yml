@@ -59,23 +59,23 @@ jobs:
             pip install robotframework robotframework-requests
 
       # Step 5: Install necessary libraries for Chrome
-      - name: Install Chrome Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            libnss3 \
-            libxss1 \
-            libappindicator1 \
-            libindicator7 \
-            fonts-liberation \
-            libasound2 \
-            libatk1.0-0 \
-            libpangocairo-1.0-0 \
-            libgtk-3-0 \
-            libgbm-dev \
-            libxshmfence-dev \
-            libxrandr-dev \
-            xvfb  # Install Xvfb for headless mode
+#      - name: Install Chrome Dependencies
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y \
+#            libnss3 \
+#            libxss1 \
+#            libappindicator1 \
+#            libindicator7 \
+#            fonts-liberation \
+#            libasound2 \
+#            libatk1.0-0 \
+#            libpangocairo-1.0-0 \
+#            libgtk-3-0 \
+#            libgbm-dev \
+#            libxshmfence-dev \
+#            libxrandr-dev \
+#            xvfb  # Install Xvfb for headless mode
       
 
       - name: Install Dependencies
