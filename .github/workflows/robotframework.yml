@@ -107,8 +107,7 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 &  # Start Xvfb in the background
           python -m robot -d results Tests/CRM.robot
 
-          
-    
+
        # Step 8: Upload robot framework report
       - name: Upload robot framework report
         uses: actions/upload-artifact@v3
@@ -124,5 +123,6 @@ jobs:
           #MY_SECRET: ${{ secrets.OFFICE_EMAIL }}  # Email address from secrets
           #EMAIL_PASSWORD: ${{ secrets.OFFICE_PASSWORD }}  # Email password from secrets
         run: python send_email.py
+
 
 
